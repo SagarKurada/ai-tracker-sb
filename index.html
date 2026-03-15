@@ -16,19 +16,32 @@
   body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(232,255,107,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,255,107,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
   .wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:48px 24px}
 
+  /* HEADER */
   .hdr-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;opacity:.8}
   h1{font-size:clamp(26px,5vw,44px);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:10px}
   h1 span{color:var(--accent)}
   .sub{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);margin-bottom:22px;line-height:1.6;max-width:640px}
-  .pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
   .pill{font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--border);color:var(--text2);background:var(--surface);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:6px}
   .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-  /* PORTFOLIO COMPARISON SECTION */
-  .portfolio-section{margin-bottom:2rem}
-  .section-title{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;opacity:.8}
+  /* TABS */
+  .tabs{display:flex;gap:0;margin-bottom:2rem;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .tab{flex:1;padding:14px 20px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);cursor:pointer;text-align:center;transition:all .2s;border-right:1px solid var(--border);letter-spacing:1px}
+  .tab:last-child{border-right:none}
+  .tab:hover{background:var(--surface2);color:var(--text)}
+  .tab.active{background:var(--accent);color:#000;font-weight:700}
+  .tab .tab-name{font-size:13px;font-weight:700;display:block;margin-bottom:3px}
+  .tab .tab-sub{font-size:10px;opacity:.7;display:block}
+  .tab.active .tab-sub{opacity:.6}
 
+  /* PORTFOLIO PANEL */
+  .panel{display:none}
+  .panel.active{display:block}
+
+  /* PORTFOLIO CARDS */
+  .section-title{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;opacity:.8}
   .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
   .port-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden}
   .port-card.equal{border-color:#4a4a6a}
@@ -36,7 +49,6 @@
   .port-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
   .port-card.equal::before{background:#4a4a6a}
   .port-card.weighted::before{background:var(--accent)}
-
   .port-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--text2);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
   .port-name{font-size:16px;font-weight:700;margin-bottom:16px;color:var(--text)}
   .port-value{font-size:36px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
@@ -45,10 +57,10 @@
   .port-pnl.neg{color:var(--red)}
   .port-pnl.neu{color:var(--text2)}
   .port-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--border);padding-top:14px}
-  .port-meta-item .pm-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:3px}
-  .port-meta-item .pm-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
+  .pm-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:3px}
+  .pm-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}
 
-  /* COMPARISON BAR */
+  /* WINNER BAR */
   .compare-bar{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:2rem;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
   .compare-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);letter-spacing:1px;white-space:nowrap}
   .compare-track{flex:1;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;min-width:120px;position:relative}
@@ -58,13 +70,13 @@
   .cleg{font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px}
   .cleg-dot{width:8px;height:8px;border-radius:2px}
 
-  /* STOCK TABLE */
+  /* TABLE */
   .notice{background:var(--surface);border-left:3px solid var(--accent);padding:14px 18px;margin-bottom:1.5rem;font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);line-height:1.7}
   .notice b{color:var(--accent);font-weight:500}
   .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
   .fbtn{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 13px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);cursor:pointer;transition:all .15s}
   .fbtn:hover,.fbtn.on{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
-  .tbl{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .tbl{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
   .thead{display:grid;grid-template-columns:1.8fr 1fr 1fr 0.9fr 0.7fr 0.8fr 0.8fr 0.9fr;padding:12px 18px;background:var(--surface2);border-bottom:1px solid var(--border)}
   .th{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;text-align:right}
   .th:first-child{text-align:left}
@@ -85,141 +97,229 @@
   .wt-bar-wrap{display:flex;align-items:center;gap:5px;justify-content:flex-end}
   .wt-bar{height:4px;background:rgba(232,255,107,.3);border-radius:2px;min-width:2px}
   .msg{padding:20px;text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--text2)}
-  .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+
+  /* FOOTER */
+  .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-top:8px;padding-top:20px;border-top:1px solid var(--border)}
   .fnote{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);line-height:1.8}
   .rbtn{background:transparent;border:1px solid var(--accent);border-radius:6px;padding:10px 20px;color:var(--accent);font-family:'DM Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;transition:all .15s}
   .rbtn:hover{background:var(--accent);color:#000}
+
   @media(max-width:768px){
     .portfolio-grid{grid-template-columns:1fr}
+    .tabs{flex-direction:column}
+    .tab{border-right:none;border-bottom:1px solid var(--border)}
+    .tab:last-child{border-bottom:none}
     .thead,.srow{grid-template-columns:1.8fr 1fr 1fr 0.7fr 0.8fr}
-    .th:nth-child(4),.th:nth-child(6),.th:nth-child(7),.th:nth-child(8){display:none}
-  }
-  @media(max-width:500px){
-    .thead,.srow{grid-template-columns:2fr 1fr 1fr 0.8fr}
-    .th:nth-child(7){display:none}
+    .th:nth-child(6),.th:nth-child(7),.th:nth-child(8){display:none}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-  
+
   <h1>SummitBay Capital <span>AI Portfolio</span></h1>
-  <p class="sub">$10,000 invested March 6, 2026 across 15 underpriced AI opportunities. Two strategies: equal weight vs. conviction-weighted by opportunity score. Track which one wins.</p>
+  <p class="sub">Three views of SummitBay Capital's AI white space thesis. $10,000 invested March 6, 2026. Equal weight vs conviction-weighted — track which methodology wins.</p>
   <div class="pills">
     <span class="pill"><span class="dot"></span><span id="upd">Loading prices…</span></span>
-    <span class="pill">📅 Invested: March 6, 2026</span>
-    
+    <span class="pill">📅 Baseline: March 6, 2026</span>
   </div>
 
-  <!-- PORTFOLIO COMPARISON -->
-  <div class="portfolio-section">
-    <div class="section-title">Portfolio Performance · $10,000 Starting Capital</div>
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('conviction',this)">
+      <span class="tab-name">Conviction Portfolio</span>
+      <span class="tab-sub">15 stocks · Analyst-driven · 6 sectors</span>
+    </div>
+    <div class="tab" onclick="switchTab('quant',this)">
+      <span class="tab-name">Quant Portfolio</span>
+      <span class="tab-sub">15 stocks · Pure formula · Mfg + Healthcare</span>
+    </div>
+    <div class="tab" onclick="switchTab('combined',this)">
+      <span class="tab-name">Combined Portfolio</span>
+      <span class="tab-sub">26 unique stocks · Best of both</span>
+    </div>
+  </div>
 
+  <!-- CONVICTION PANEL -->
+  <div class="panel active" id="panel-conviction">
+    <div class="section-title">Conviction Portfolio · $10,000 · Equal vs Score-Weighted</div>
     <div class="portfolio-grid">
-      <!-- EQUAL WEIGHT -->
       <div class="port-card equal">
         <div class="port-label">Strategy 1</div>
         <div class="port-name">Equal Weight</div>
-        <div class="port-value" id="eq-value" style="color:var(--text)">$10,000</div>
-        <div class="port-pnl neu" id="eq-pnl">Waiting for prices…</div>
+        <div class="port-value" id="c-eq-value">$10,000</div>
+        <div class="port-pnl neu" id="c-eq-pnl">Waiting for prices…</div>
         <div class="port-meta">
-          <div class="port-meta-item">
-            <div class="pm-label">Per stock</div>
-            <div class="pm-val" style="color:var(--text2)">$666.67</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">Allocation logic</div>
-            <div class="pm-val" style="color:var(--text2)">100 ÷ 15</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">Total return</div>
-            <div class="pm-val" id="eq-pct" style="color:var(--text2)">—</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">P&amp;L</div>
-            <div class="pm-val" id="eq-dollar" style="color:var(--text2)">—</div>
-          </div>
+          <div><div class="pm-label">Per stock</div><div class="pm-val" style="color:var(--text2)">$666.67</div></div>
+          <div><div class="pm-label">Allocation</div><div class="pm-val" style="color:var(--text2)">100 ÷ 15</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="c-eq-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="c-eq-dollar" style="color:var(--text2)">—</div></div>
         </div>
       </div>
-
-      <!-- SCORE WEIGHTED -->
       <div class="port-card weighted">
         <div class="port-label">Strategy 2</div>
         <div class="port-name">Score-Weighted</div>
-        <div class="port-value" id="wt-value" style="color:var(--text)">$10,000</div>
-        <div class="port-pnl neu" id="wt-pnl">Waiting for prices…</div>
+        <div class="port-value" id="c-wt-value">$10,000</div>
+        <div class="port-pnl neu" id="c-wt-pnl">Waiting for prices…</div>
         <div class="port-meta">
-          <div class="port-meta-item">
-            <div class="pm-label">Highest weight</div>
-            <div class="pm-val" style="color:var(--accent)">ABB 9.1%</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">Lowest weight</div>
-            <div class="pm-val" style="color:var(--text2)">GEV 4.5%</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">Total return</div>
-            <div class="pm-val" id="wt-pct" style="color:var(--text2)">—</div>
-          </div>
-          <div class="port-meta-item">
-            <div class="pm-label">P&amp;L</div>
-            <div class="pm-val" id="wt-dollar" style="color:var(--text2)">—</div>
-          </div>
+          <div><div class="pm-label">Highest weight</div><div class="pm-val" style="color:var(--accent)">ABB 9.1%</div></div>
+          <div><div class="pm-label">Lowest weight</div><div class="pm-val" style="color:var(--text2)">GEV 4.5%</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="c-wt-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="c-wt-dollar" style="color:var(--text2)">—</div></div>
         </div>
       </div>
     </div>
-
-    <!-- COMPARE BAR -->
     <div class="compare-bar">
       <span class="compare-label">Which strategy is winning?</span>
-      <div class="compare-track" style="flex:1">
-        <div class="compare-fill-eq" id="bar-eq" style="width:50%"></div>
-        <div class="compare-fill-wt" id="bar-wt" style="width:50%"></div>
+      <div class="compare-track"><div class="compare-fill-eq" id="c-bar-eq" style="width:50%"></div><div class="compare-fill-wt" id="c-bar-wt" style="width:50%"></div></div>
+      <div class="compare-legend"><span class="cleg"><span class="cleg-dot" style="background:#4a4a6a"></span>Equal</span><span class="cleg"><span class="cleg-dot" style="background:var(--accent)"></span>Score-wtd</span></div>
+      <span id="c-winner" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">Loading…</span>
+    </div>
+    <div class="notice"><b>Analyst-driven selection.</b> Scored on TAM size, AI adoption gap, disruption potential, and rerating penalty. Covers Manufacturing, Healthcare, Energy, Software, Legal, and Commerce.</div>
+    <div class="filters" id="c-filters">
+      <button class="fbtn on" onclick="fil('conviction','all',this)">All</button>
+      <button class="fbtn" onclick="fil('conviction','HIGH',this)">High opp ≥65</button>
+      <button class="fbtn" onclick="fil('conviction','MED-HIGH',this)">Med-high</button>
+      <button class="fbtn" onclick="fil('conviction','MEDIUM',this)">Medium</button>
+      <button class="fbtn" onclick="fil('conviction','Healthcare',this)">Healthcare</button>
+      <button class="fbtn" onclick="fil('conviction','Manufacturing',this)">Manufacturing</button>
+      <button class="fbtn" onclick="fil('conviction','Legal',this)">Legal</button>
+      <button class="fbtn" onclick="fil('conviction','Energy',this)">Energy</button>
+    </div>
+    <div class="tbl">
+      <div class="thead">
+        <div class="th" style="text-align:left">Company</div>
+        <div class="th">Live price</div>
+        <div class="th">Since Mar 6</div>
+        <div class="th">Mar 6 base</div>
+        <div class="th">Score</div>
+        <div class="th">Eq. alloc</div>
+        <div class="th">Wt. alloc</div>
+        <div class="th">Wt. P&amp;L</div>
       </div>
-      <div class="compare-legend">
-        <span class="cleg"><span class="cleg-dot" style="background:#4a4a6a"></span>Equal</span>
-        <span class="cleg"><span class="cleg-dot" style="background:var(--accent)"></span>Score-wtd</span>
-      </div>
-      <span id="winner-label" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">Loading…</span>
+      <div id="rows-conviction"><div class="msg">Fetching prices…</div></div>
     </div>
   </div>
 
-  <!-- STOCK TABLE -->
-  <div class="notice">
-    <b>How scores drive weights:</b> Score-weighted allocates proportionally to opportunity score (total = 932 pts).
-    ABB scores 85 → gets 9.1% ($910). GEV scores 42 → gets 4.5% ($451). Equal weight gives each stock $667 regardless of score.
-  </div>
-
-  <div class="filters">
-    <button class="fbtn on" onclick="fil('all',this)">All</button>
-    <button class="fbtn" onclick="fil('HIGH',this)">High opp ≥65</button>
-    <button class="fbtn" onclick="fil('MED-HIGH',this)">Med-high</button>
-    <button class="fbtn" onclick="fil('MEDIUM',this)">Medium</button>
-    <button class="fbtn" onclick="fil('Healthcare',this)">Healthcare</button>
-    <button class="fbtn" onclick="fil('Manufacturing',this)">Manufacturing</button>
-    <button class="fbtn" onclick="fil('Legal',this)">Legal</button>
-    <button class="fbtn" onclick="fil('Energy',this)">Energy</button>
-  </div>
-
-  <div class="tbl">
-    <div class="thead">
-      <div class="th" style="text-align:left">Company</div>
-      <div class="th">Live price</div>
-      
-      <div class="th">Since Mar 6</div>
-      <div class="th">Mar 6 base</div>
-      <div class="th">Score</div>
-      <div class="th">Eq. alloc</div>
-      <div class="th">Wt. alloc</div>
-      <div class="th">Wt. P&amp;L</div>
+  <!-- QUANT PANEL -->
+  <div class="panel" id="panel-quant">
+    <div class="section-title">Quant Portfolio · $10,000 · Equal vs Score-Weighted</div>
+    <div class="portfolio-grid">
+      <div class="port-card equal">
+        <div class="port-label">Strategy 1</div>
+        <div class="port-name">Equal Weight</div>
+        <div class="port-value" id="q-eq-value">$10,000</div>
+        <div class="port-pnl neu" id="q-eq-pnl">Waiting for prices…</div>
+        <div class="port-meta">
+          <div><div class="pm-label">Per stock</div><div class="pm-val" style="color:var(--text2)">$666.67</div></div>
+          <div><div class="pm-label">Allocation</div><div class="pm-val" style="color:var(--text2)">100 ÷ 15</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="q-eq-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="q-eq-dollar" style="color:var(--text2)">—</div></div>
+        </div>
+      </div>
+      <div class="port-card weighted">
+        <div class="port-label">Strategy 2</div>
+        <div class="port-name">Score-Weighted</div>
+        <div class="port-value" id="q-wt-value">$10,000</div>
+        <div class="port-pnl neu" id="q-wt-pnl">Waiting for prices…</div>
+        <div class="port-meta">
+          <div><div class="pm-label">Highest weight</div><div class="pm-val" style="color:var(--accent)">Yaskawa 8.0%</div></div>
+          <div><div class="pm-label">Lowest weight</div><div class="pm-val" style="color:var(--text2)">ISRG 6.5%</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="q-wt-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="q-wt-dollar" style="color:var(--text2)">—</div></div>
+        </div>
+      </div>
     </div>
-    <div id="rows"><div class="msg">Fetching live prices…</div></div>
+    <div class="compare-bar">
+      <span class="compare-label">Which strategy is winning?</span>
+      <div class="compare-track"><div class="compare-fill-eq" id="q-bar-eq" style="width:50%"></div><div class="compare-fill-wt" id="q-bar-wt" style="width:50%"></div></div>
+      <div class="compare-legend"><span class="cleg"><span class="cleg-dot" style="background:#4a4a6a"></span>Equal</span><span class="cleg"><span class="cleg-dot" style="background:var(--accent)"></span>Score-wtd</span></div>
+      <span id="q-winner" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">Loading…</span>
+    </div>
+    <div class="notice"><b>Purely mechanical selection.</b> Scored on TAM (45%) + inverse AI adoption (35%) + inverse 3Y stock rerating (20%). No analyst judgment. Manufacturing and Healthcare only.</div>
+    <div class="filters" id="q-filters">
+      <button class="fbtn on" onclick="fil('quant','all',this)">All</button>
+      <button class="fbtn" onclick="fil('quant','Manufacturing',this)">Manufacturing</button>
+      <button class="fbtn" onclick="fil('quant','Healthcare',this)">Healthcare</button>
+    </div>
+    <div class="tbl">
+      <div class="thead">
+        <div class="th" style="text-align:left">Company</div>
+        <div class="th">Live price</div>
+        <div class="th">Since Mar 6</div>
+        <div class="th">Mar 6 base</div>
+        <div class="th">Score</div>
+        <div class="th">Eq. alloc</div>
+        <div class="th">Wt. alloc</div>
+        <div class="th">Wt. P&amp;L</div>
+      </div>
+      <div id="rows-quant"><div class="msg">Fetching prices…</div></div>
+    </div>
+  </div>
+
+  <!-- COMBINED PANEL -->
+  <div class="panel" id="panel-combined">
+    <div class="section-title">Combined Portfolio · $10,000 · Equal vs Score-Weighted</div>
+    <div class="portfolio-grid">
+      <div class="port-card equal">
+        <div class="port-label">Strategy 1</div>
+        <div class="port-name">Equal Weight</div>
+        <div class="port-value" id="x-eq-value">$10,000</div>
+        <div class="port-pnl neu" id="x-eq-pnl">Waiting for prices…</div>
+        <div class="port-meta">
+          <div><div class="pm-label">Per stock</div><div class="pm-val" style="color:var(--text2)">$384.62</div></div>
+          <div><div class="pm-label">Stocks</div><div class="pm-val" style="color:var(--text2)">26 unique</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="x-eq-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="x-eq-dollar" style="color:var(--text2)">—</div></div>
+        </div>
+      </div>
+      <div class="port-card weighted">
+        <div class="port-label">Strategy 2</div>
+        <div class="port-name">Score-Weighted</div>
+        <div class="port-value" id="x-wt-value">$10,000</div>
+        <div class="port-pnl neu" id="x-wt-pnl">Waiting for prices…</div>
+        <div class="port-meta">
+          <div><div class="pm-label">Methodology</div><div class="pm-val" style="color:var(--accent)">Normalised scores</div></div>
+          <div><div class="pm-label">Universe</div><div class="pm-val" style="color:var(--text2)">Conviction + Quant</div></div>
+          <div><div class="pm-label">Total return</div><div class="pm-val" id="x-wt-pct" style="color:var(--text2)">—</div></div>
+          <div><div class="pm-label">P&amp;L</div><div class="pm-val" id="x-wt-dollar" style="color:var(--text2)">—</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="compare-bar">
+      <span class="compare-label">Which strategy is winning?</span>
+      <div class="compare-track"><div class="compare-fill-eq" id="x-bar-eq" style="width:50%"></div><div class="compare-fill-wt" id="x-bar-wt" style="width:50%"></div></div>
+      <div class="compare-legend"><span class="cleg"><span class="cleg-dot" style="background:#4a4a6a"></span>Equal</span><span class="cleg"><span class="cleg-dot" style="background:var(--accent)"></span>Score-wtd</span></div>
+      <span id="x-winner" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">Loading…</span>
+    </div>
+    <div class="notice"><b>Best of both methodologies.</b> 26 unique companies — Conviction Portfolio's analyst picks combined with Quant Portfolio's mechanical selections. Scores normalised to a common 0-100 scale for weighting.</div>
+    <div class="filters" id="x-filters">
+      <button class="fbtn on" onclick="fil('combined','all',this)">All</button>
+      <button class="fbtn" onclick="fil('combined','Healthcare',this)">Healthcare</button>
+      <button class="fbtn" onclick="fil('combined','Manufacturing',this)">Manufacturing</button>
+      <button class="fbtn" onclick="fil('combined','Legal',this)">Legal</button>
+      <button class="fbtn" onclick="fil('combined','Energy',this)">Energy</button>
+      <button class="fbtn" onclick="fil('combined','Software',this)">Software</button>
+    </div>
+    <div class="tbl">
+      <div class="thead">
+        <div class="th" style="text-align:left">Company</div>
+        <div class="th">Live price</div>
+        <div class="th">Since Mar 6</div>
+        <div class="th">Mar 6 base</div>
+        <div class="th">Score</div>
+        <div class="th">Eq. alloc</div>
+        <div class="th">Wt. alloc</div>
+        <div class="th">Wt. P&amp;L</div>
+      </div>
+      <div id="rows-combined"><div class="msg">Fetching prices…</div></div>
+    </div>
   </div>
 
   <div class="footer">
     <div class="fnote">
-      Prices via Finnhub · Real-time US quotes · Baselines = March 6, 2026 actual closes<br>
-      Hypothetical $10,000 portfolio · Research only · Not investment advice · SummitBay Capital
+      Prices via Finnhub · Baselines = March 6, 2026 actual closes · Hypothetical $10,000 portfolio<br>
+      Research only · Not investment advice · SummitBay Capital · Sagar Kurada
     </div>
     <button class="rbtn" onclick="go()">↻ Refresh</button>
   </div>
@@ -229,7 +329,8 @@
 const KEY = 'd6r7sopr01qgdhqdhq50d6r7sopr01qgdhqdhq5g';
 const START = 10000;
 
-const stocks = [
+// CONVICTION 15 — analyst-driven, 0-100 scale
+const conviction = [
   {t:'ABBNY', n:'ABB Ltd',            s:'Manufacturing', score:85, tier:'HIGH',     b:84.73},
   {t:'SIEGY', n:'Siemens AG',         s:'Manufacturing', score:83, tier:'HIGH',     b:82.50},
   {t:'SBGSY', n:'Schneider Electric', s:'Manufacturing', score:78, tier:'HIGH',     b:62.00},
@@ -247,15 +348,81 @@ const stocks = [
   {t:'GEV',   n:'GE Vernova',         s:'Energy',        score:42, tier:'MEDIUM',   b:789.23},
 ];
 
-// Pre-compute weights
-const totalScore = stocks.reduce((a, s) => a + s.score, 0); // 932
-stocks.forEach(s => {
-  s.eqAlloc  = START / stocks.length;           // $666.67 each
-  s.wtAlloc  = START * (s.score / totalScore);  // score-proportional
-  s.wtPct    = (s.score / totalScore * 100);
-});
+// QUANT 15 — pure formula, score on 0-1 scale normalised to 0-100
+const quant = [
+  {t:'YASKF', n:'Yaskawa Electric',      s:'Manufacturing', score:88, tier:'HIGH', b:40.00},
+  {t:'FANUY', n:'Fanuc',                 s:'Manufacturing', score:88, tier:'HIGH', b:22.00},
+  {t:'KYCCF', n:'Keyence',               s:'Manufacturing', score:88, tier:'HIGH', b:55.00},
+  {t:'ROK',   n:'Rockwell Automation',   s:'Manufacturing', score:87, tier:'HIGH', b:265.00},
+  {t:'HON',   n:'Honeywell',             s:'Manufacturing', score:87, tier:'HIGH', b:210.00},
+  {t:'SIEGY', n:'Siemens AG',            s:'Manufacturing', score:87, tier:'HIGH', b:82.50},
+  {t:'ABBNY', n:'ABB Ltd',               s:'Manufacturing', score:87, tier:'HIGH', b:84.73},
+  {t:'SBGSY', n:'Schneider Electric',    s:'Manufacturing', score:86, tier:'HIGH', b:62.00},
+  {t:'ILMN',  n:'Illumina',              s:'Healthcare',    score:76, tier:'HIGH', b:95.00},
+  {t:'RXRX',  n:'Recursion Pharma',      s:'Healthcare',    score:76, tier:'HIGH', b:8.50},
+  {t:'ABT',   n:'Abbott Labs',           s:'Healthcare',    score:75, tier:'HIGH', b:130.00},
+  {t:'SMMNY', n:'Siemens Healthineers',  s:'Healthcare',    score:75, tier:'HIGH', b:28.00},
+  {t:'SYK',   n:'Stryker',               s:'Healthcare',    score:74, tier:'HIGH', b:385.00},
+  {t:'REGN',  n:'Regeneron',             s:'Healthcare',    score:74, tier:'HIGH', b:620.00},
+  {t:'ISRG',  n:'Intuitive Surgical',    s:'Healthcare',    score:72, tier:'HIGH', b:490.16},
+];
 
-let prices = {}, af = 'all';
+// COMBINED — 26 unique tickers (deduplicated, scores normalised)
+const combined = [
+  // From conviction only
+  {t:'LLY',   n:'Eli Lilly',            s:'Healthcare',    score:85, b:990.33},
+  {t:'NEE',   n:'NextEra Energy',        s:'Energy',        score:75, b:91.02},
+  {t:'ADBE',  n:'Adobe Inc.',            s:'Software',      score:70, b:283.62},
+  {t:'ADSK',  n:'Autodesk',              s:'Software',      score:68, b:260.99},
+  {t:'RELX',  n:'RELX Group',            s:'Legal',         score:65, b:31.50},
+  {t:'TRI',   n:'Thomson Reuters',       s:'Legal',         score:64, b:111.46},
+  {t:'INTU',  n:'Intuit Inc.',           s:'Software',      score:62, b:481.17},
+  {t:'HUBS',  n:'HubSpot',               s:'Software',      score:57, b:278.59},
+  {t:'SHOP',  n:'Shopify',               s:'Commerce',      score:55, b:130.20},
+  {t:'ETN',   n:'Eaton Corp',            s:'Energy',        score:54, b:347.75},
+  {t:'GEV',   n:'GE Vernova',            s:'Energy',        score:49, b:789.23},
+  // From quant only
+  {t:'YASKF', n:'Yaskawa Electric',      s:'Manufacturing', score:88, b:40.00},
+  {t:'FANUY', n:'Fanuc',                 s:'Manufacturing', score:88, b:22.00},
+  {t:'KYCCF', n:'Keyence',               s:'Manufacturing', score:88, b:55.00},
+  {t:'ROK',   n:'Rockwell Automation',   s:'Manufacturing', score:87, b:265.00},
+  {t:'HON',   n:'Honeywell',             s:'Manufacturing', score:87, b:210.00},
+  {t:'ILMN',  n:'Illumina',              s:'Healthcare',    score:76, b:95.00},
+  {t:'RXRX',  n:'Recursion Pharma',      s:'Healthcare',    score:76, b:8.50},
+  {t:'ABT',   n:'Abbott Labs',           s:'Healthcare',    score:75, b:130.00},
+  {t:'SMMNY', n:'Siemens Healthineers',  s:'Healthcare',    score:75, b:28.00},
+  {t:'SYK',   n:'Stryker',               s:'Healthcare',    score:74, b:385.00},
+  {t:'REGN',  n:'Regeneron',             s:'Healthcare',    score:74, b:620.00},
+  // Overlap — appear in both, keep once with averaged score
+  {t:'ABBNY', n:'ABB Ltd',               s:'Manufacturing', score:86, b:84.73},
+  {t:'SIEGY', n:'Siemens AG',            s:'Manufacturing', score:85, b:82.50},
+  {t:'SBGSY', n:'Schneider Electric',    s:'Manufacturing', score:82, b:62.00},
+  {t:'ISRG',  n:'Intuitive Surgical',    s:'Healthcare',    score:72, b:490.16},
+];
+
+// Pre-compute weights for each portfolio
+function computeWeights(list) {
+  const total = list.reduce((a, s) => a + s.score, 0);
+  list.forEach(s => {
+    s.eqAlloc = START / list.length;
+    s.wtAlloc = START * (s.score / total);
+    s.wtPct   = s.score / total * 100;
+  });
+}
+computeWeights(conviction);
+computeWeights(quant);
+computeWeights(combined);
+
+// All unique tickers to fetch
+const allTickers = [...new Set([
+  ...conviction.map(s=>s.t),
+  ...quant.map(s=>s.t),
+  ...combined.map(s=>s.t)
+])];
+
+let prices = {};
+let filters = {conviction:'all', quant:'all', combined:'all'};
+let activeTab = 'conviction';
 
 async function fetchOne(ticker) {
   try {
@@ -263,136 +430,122 @@ async function fetchOne(ticker) {
       `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${KEY}`,
       {signal: AbortSignal.timeout(8000)}
     );
-    if (!r.ok) return {error: true};
+    if (!r.ok) return {error:true};
     const d = await r.json();
-    if (!d.c || d.c === 0) return {error: true};
-    return {price: d.c, chg: d.dp ?? ((d.c - d.pc) / d.pc * 100)};
-  } catch { return {error: true}; }
+    if (!d.c || d.c === 0) return {error:true};
+    return {price:d.c, chg:d.dp ?? ((d.c-d.pc)/d.pc*100)};
+  } catch { return {error:true}; }
 }
 
 async function go() {
   document.getElementById('upd').textContent = 'Fetching prices…';
-  render();
+  renderAll();
 
-  for (let i = 0; i < stocks.length; i++) {
-    const s = stocks[i];
-    fetchOne(s.t).then(result => {
-      prices[s.t] = result;
-      updatePortfolios();
-      render();
+  for (let i = 0; i < allTickers.length; i++) {
+    const t = allTickers[i];
+    fetchOne(t).then(result => {
+      prices[t] = result;
+      updatePortfolio('conviction', conviction, 'c');
+      updatePortfolio('quant', quant, 'q');
+      updatePortfolio('combined', combined, 'x');
+      renderAll();
     });
     if (i % 5 === 4) await new Promise(r => setTimeout(r, 300));
   }
 
-  await new Promise(r => setTimeout(r, 2500));
-  const loaded = stocks.filter(s => prices[s.t] && !prices[s.t].error).length;
+  await new Promise(r => setTimeout(r, 3000));
+  const loaded = allTickers.filter(t => prices[t] && !prices[t].error).length;
   document.getElementById('upd').textContent =
-    `${loaded}/15 prices loaded · ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}`;
+    `${loaded}/${allTickers.length} prices loaded · ${new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}`;
 }
 
-function updatePortfolios() {
-  let eqTotal = 0, wtTotal = 0, eqLoaded = 0, wtLoaded = 0;
-
-  stocks.forEach(s => {
+function updatePortfolio(name, list, prefix) {
+  let eqTotal = 0, wtTotal = 0, loaded = 0;
+  list.forEach(s => {
     const d = prices[s.t];
-    if (!d || d.error) return;
-    const ret = (d.price - s.b) / s.b; // fractional return
-
-    // Equal weight: each stock gets $666.67, grows by its return
+    if (!d || d.error) {
+      eqTotal += s.eqAlloc;
+      wtTotal += s.wtAlloc;
+      return;
+    }
+    const ret = (d.price - s.b) / s.b;
     eqTotal += s.eqAlloc * (1 + ret);
-    eqLoaded++;
-
-    // Score weighted: each stock gets score-proportional allocation
     wtTotal += s.wtAlloc * (1 + ret);
-    wtLoaded++;
+    loaded++;
   });
+  if (loaded === 0) return;
 
-  // Add back unloaded allocations at cost (no gain/loss assumed)
-  const unloadedEq = stocks.length - eqLoaded;
-  eqTotal += unloadedEq * (START / stocks.length);
-  const unloadedWt = stocks.filter(s => !prices[s.t] || prices[s.t].error);
-  unloadedWt.forEach(s => { wtTotal += s.wtAlloc; });
-
-  if (eqLoaded === 0) return;
-
-  // Equal weight display
   const eqPnl = eqTotal - START;
-  const eqPct = (eqPnl / START) * 100;
-  document.getElementById('eq-value').textContent = `$${eqTotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-  const eqPnlEl = document.getElementById('eq-pnl');
-  eqPnlEl.textContent = `${eqPnl >= 0 ? '+' : ''}$${Math.abs(eqPnl).toFixed(2)} since March 6, 2026`;
-  eqPnlEl.className = `port-pnl ${eqPnl > 0 ? 'pos' : eqPnl < 0 ? 'neg' : 'neu'}`;
-  document.getElementById('eq-value').style.color = eqPnl > 0 ? 'var(--green)' : eqPnl < 0 ? 'var(--red)' : 'var(--text)';
-  document.getElementById('eq-pct').textContent = `${eqPct >= 0 ? '+' : ''}${eqPct.toFixed(2)}%`;
-  document.getElementById('eq-pct').style.color = eqPct >= 0 ? 'var(--green)' : 'var(--red)';
-  document.getElementById('eq-dollar').textContent = `${eqPnl >= 0 ? '+' : ''}$${eqPnl.toFixed(2)}`;
-  document.getElementById('eq-dollar').style.color = eqPnl >= 0 ? 'var(--green)' : 'var(--red)';
-
-  // Score weighted display
+  const eqPct = eqPnl / START * 100;
   const wtPnl = wtTotal - START;
-  const wtPct = (wtPnl / START) * 100;
-  document.getElementById('wt-value').textContent = `$${wtTotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-  const wtPnlEl = document.getElementById('wt-pnl');
-  wtPnlEl.textContent = `${wtPnl >= 0 ? '+' : ''}$${Math.abs(wtPnl).toFixed(2)} since March 6, 2026`;
-  wtPnlEl.className = `port-pnl ${wtPnl > 0 ? 'pos' : wtPnl < 0 ? 'neg' : 'neu'}`;
-  document.getElementById('wt-value').style.color = wtPnl > 0 ? 'var(--green)' : wtPnl < 0 ? 'var(--red)' : 'var(--text)';
-  document.getElementById('wt-pct').textContent = `${wtPct >= 0 ? '+' : ''}${wtPct.toFixed(2)}%`;
-  document.getElementById('wt-pct').style.color = wtPct >= 0 ? 'var(--green)' : 'var(--red)';
-  document.getElementById('wt-dollar').textContent = `${wtPnl >= 0 ? '+' : ''}$${wtPnl.toFixed(2)}`;
-  document.getElementById('wt-dollar').style.color = wtPnl >= 0 ? 'var(--green)' : 'var(--red)';
+  const wtPct = wtPnl / START * 100;
 
-  // Winner bar
-  const maxPct = Math.max(Math.abs(eqPct), Math.abs(wtPct), 0.01);
-  document.getElementById('bar-eq').style.width = `${Math.abs(eqPct) / maxPct * 100}%`;
-  document.getElementById('bar-wt').style.width = `${Math.abs(wtPct) / maxPct * 100}%`;
+  setCard(prefix+'-eq-value', prefix+'-eq-pnl', prefix+'-eq-pct', prefix+'-eq-dollar', eqTotal, eqPnl, eqPct);
+  setCard(prefix+'-wt-value', prefix+'-wt-pnl', prefix+'-wt-pct', prefix+'-wt-dollar', wtTotal, wtPnl, wtPct);
+
+  const maxP = Math.max(Math.abs(eqPct), Math.abs(wtPct), 0.01);
+  document.getElementById(prefix+'-bar-eq').style.width = `${Math.abs(eqPct)/maxP*100}%`;
+  document.getElementById(prefix+'-bar-wt').style.width = `${Math.abs(wtPct)/maxP*100}%`;
   const diff = wtPct - eqPct;
-  const winnerEl = document.getElementById('winner-label');
-  if (Math.abs(diff) < 0.01) {
-    winnerEl.textContent = 'Tied';
-    winnerEl.style.color = 'var(--text2)';
-  } else if (diff > 0) {
-    winnerEl.textContent = `Score-weighted winning by ${Math.abs(diff).toFixed(2)}%`;
-    winnerEl.style.color = 'var(--accent)';
-  } else {
-    winnerEl.textContent = `Equal weight winning by ${Math.abs(diff).toFixed(2)}%`;
-    winnerEl.style.color = 'var(--text2)';
-  }
+  const wEl = document.getElementById(prefix+'-winner');
+  if (Math.abs(diff) < 0.01) { wEl.textContent='Tied'; wEl.style.color='var(--text2)'; }
+  else if (diff > 0) { wEl.textContent=`Score-weighted ahead by ${Math.abs(diff).toFixed(2)}%`; wEl.style.color='var(--accent)'; }
+  else { wEl.textContent=`Equal weight ahead by ${Math.abs(diff).toFixed(2)}%`; wEl.style.color='var(--text2)'; }
 }
 
-function render() {
-  const c = document.getElementById('rows');
-  const vis = stocks.filter(s =>
-    af === 'all' || s.tier === af || s.s.toLowerCase().includes(af.toLowerCase())
+function setCard(vId, pId, pctId, dolId, total, pnl, pct) {
+  document.getElementById(vId).textContent = `$${total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+  document.getElementById(vId).style.color = pnl > 0 ? 'var(--green)' : pnl < 0 ? 'var(--red)' : 'var(--text)';
+  const pEl = document.getElementById(pId);
+  pEl.textContent = `${pnl >= 0?'+':''}$${Math.abs(pnl).toFixed(2)} since March 6, 2026`;
+  pEl.className = `port-pnl ${pnl>0?'pos':pnl<0?'neg':'neu'}`;
+  document.getElementById(pctId).textContent = `${pct>=0?'+':''}${pct.toFixed(2)}%`;
+  document.getElementById(pctId).style.color = pct>=0?'var(--green)':'var(--red)';
+  document.getElementById(dolId).textContent = `${pnl>=0?'+':''}$${pnl.toFixed(2)}`;
+  document.getElementById(dolId).style.color = pnl>=0?'var(--green)':'var(--red)';
+}
+
+function renderAll() {
+  renderTable('conviction', conviction);
+  renderTable('quant', quant);
+  renderTable('combined', combined);
+}
+
+function renderTable(name, list) {
+  const c = document.getElementById('rows-'+name);
+  const af = filters[name];
+  const vis = list.filter(s =>
+    af === 'all' || s.tier === af ||
+    (s.s && s.s.toLowerCase().includes(af.toLowerCase()))
   );
-  if (!vis.length) { c.innerHTML = '<div class="msg">No stocks match this filter.</div>'; return; }
+  if (!vis.length) { c.innerHTML='<div class="msg">No stocks match.</div>'; return; }
   c.innerHTML = '';
+  const maxWt = Math.max(...list.map(s=>s.wtPct));
 
   vis.forEach(stock => {
     const d = prices[stock.t];
-    const sc = stock.score >= 65 ? 'sc-h' : stock.score >= 50 ? 'sc-m' : 'sc-l';
-    const maxWt = Math.max(...stocks.map(s => s.wtPct));
+    const sc = stock.score >= 75 ? 'sc-h' : stock.score >= 60 ? 'sc-m' : 'sc-l';
+    let pH, sH, wtPnlH;
 
-    let pH, tH, sH, wtPnlH;
     if (!d) {
-      pH = `<div class="td" style="color:var(--muted)">—</div>`;
-      sH = `<div class="td" style="color:var(--muted)">—</div>`;
-      wtPnlH = `<div class="td" style="color:var(--muted)">—</div>`;
+      pH=`<div class="td" style="color:var(--muted)">—</div>`;
+      sH=`<div class="td" style="color:var(--muted)">—</div>`;
+      wtPnlH=`<div class="td" style="color:var(--muted)">—</div>`;
     } else if (d.error) {
-      pH = `<div class="td" style="color:var(--muted)">n/a</div>`;
-      sH = `<div class="td" style="color:var(--muted)">—</div>`;
-      wtPnlH = `<div class="td" style="color:var(--muted)">—</div>`;
+      pH=`<div class="td" style="color:var(--muted)">n/a</div>`;
+      sH=`<div class="td" style="color:var(--muted)">—</div>`;
+      wtPnlH=`<div class="td" style="color:var(--muted)">—</div>`;
     } else {
       const sr = (d.price - stock.b) / stock.b * 100;
-      const sCls = sr > 0.1 ? 'pos' : sr < -0.1 ? 'neg' : 'neu';
+      const sCls = sr > 0.1?'pos':sr<-0.1?'neg':'neu';
       const wtPnl = stock.wtAlloc * (d.price - stock.b) / stock.b;
-      const wtPnlCls = wtPnl > 0 ? 'pos' : wtPnl < 0 ? 'neg' : 'neu';
-      pH = `<div class="td">$${d.price.toFixed(2)}</div>`;
-      sH = `<div class="td"><span class="badge ${sCls}">${sr >= 0 ? '+' : ''}${sr.toFixed(1)}%</span></div>`;
-      wtPnlH = `<div class="td"><span class="badge ${wtPnlCls}">${wtPnl >= 0 ? '+' : ''}$${Math.abs(wtPnl).toFixed(2)}</span></div>`;
+      const wCls = wtPnl>0?'pos':wtPnl<0?'neg':'neu';
+      pH=`<div class="td">$${d.price.toFixed(2)}</div>`;
+      sH=`<div class="td"><span class="badge ${sCls}">${sr>=0?'+':''}${sr.toFixed(1)}%</span></div>`;
+      wtPnlH=`<div class="td"><span class="badge ${wCls}">${wtPnl>=0?'+':''}$${Math.abs(wtPnl).toFixed(2)}</span></div>`;
     }
 
     const barW = Math.round(stock.wtPct / maxWt * 60);
-
     const row = document.createElement('div');
     row.className = 'srow';
     row.innerHTML = `
@@ -401,25 +554,29 @@ function render() {
       <div class="td" style="color:var(--text2)">$${stock.b.toFixed(2)}</div>
       <div class="td"><span class="${sc}">${stock.score}</span></div>
       <div class="td" style="color:var(--text2)">$${stock.eqAlloc.toFixed(0)}</div>
-      <div class="td">
-        <div class="wt-bar-wrap">
-          <span style="color:var(--accent)">${stock.wtPct.toFixed(1)}%</span>
-          <div class="wt-bar" style="width:${barW}px;background:var(--accent)"></div>
-        </div>
-      </div>
+      <div class="td"><div class="wt-bar-wrap"><span style="color:var(--accent)">${stock.wtPct.toFixed(1)}%</span><div class="wt-bar" style="width:${barW}px;background:var(--accent)"></div></div></div>
       ${wtPnlH}`;
     c.appendChild(row);
   });
 }
 
-function fil(v, btn) {
-  af = v;
-  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  render();
+function switchTab(name, el) {
+  activeTab = name;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
 }
 
-render();
+function fil(portfolio, val, btn) {
+  filters[portfolio] = val;
+  const container = document.getElementById(portfolio==='conviction'?'c-filters':portfolio==='quant'?'q-filters':'x-filters');
+  container.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderTable(portfolio, portfolio==='conviction'?conviction:portfolio==='quant'?quant:combined);
+}
+
+renderAll();
 go();
 </script>
 </body>
